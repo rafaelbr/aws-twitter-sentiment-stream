@@ -1,0 +1,22 @@
+version: 0.2
+phases:
+  install:
+    commands:
+  pre_build:
+    commands:
+      - mvn package
+  build:
+    commands:
+      # Use AWS SAM to package the application by using AWS CloudFormation
+      - aws cloudformation package --template step_template.yml --s3-bucket $S3_BUCKET --output-template-file step_template_export.yml
+cache:
+  paths:
+    - '/root/.m2/**/*'
+artifacts:
+  type: zip
+  name: emr-resources
+  files:
+    - target/TwitterSentiment-1.0-SNAPSHOT-selfcontained.jar
+    - step_template_export.yml
+    - server_template.yml
+  discard-paths: yes
