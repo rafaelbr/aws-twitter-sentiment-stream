@@ -16,7 +16,7 @@ Resources:
       ReleaseLabel: emr-6.5.0
       JobFlowRole: EMR_EC2_DefaultRole
       ServiceRole: EMR_DefaultRole
-      LogUri: s3://aws-logs-707489670429-sa-east-1/elasticmapreduce/
+      LogUri: s3://aws-logs-emr/elasticmapreduce/
       Applications:
         - Name: Spark
       Instances:
